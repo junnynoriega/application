@@ -1,0 +1,11 @@
+html {
+    background-color: #f6b8d1;
+}
+
+body {
+    border: #f50d64 2px dot-dash;
+}
+
+.header {
+    text-align: center;
+}
