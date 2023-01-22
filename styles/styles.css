@@ -1,11 +1,9 @@
 html {
     background-color: #f6b8d1;
-    text-align: center;
     background-image: url("https://www.eecs.mit.edu/wp-content/uploads/2021/06/EEhero.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    /*font-family: 'Quicksand', sans-serif;*/
 }
 
 body {
@@ -18,30 +16,39 @@ body {
 }
 
 .header {
-    /*padding: 15px;*/
+    margin-top: 20px;
 }
 
-#button {
+.button {
     color: white;
     border-radius: 5px;
     margin: 5px;
     padding: 15px;
     text-decoration: none;
     background-color: rgb(114, 25, 229);
+    float: right;
 }
-#button:hover {
+.button:hover {
     color: white;
     background-color: #f50d64;
 }
-#button:visited {
+.button:visited {
     color: inherit;
-}
-
-.container {
-    margin: 0 40px;
-    border-bottom: 2px solid black;
 }
 
 h2 {
     border-bottom: 2px solid black;
+    text-align: center;
+}
+
+.container {
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    overflow: auto;
 }
