@@ -1,0 +1,68 @@
+<!-- personalInfo route -> views/personal-info.html-->
+
+<include href="views/header.html"></include>
+<body>
+    <form action="#" method="post" class="form-horizontal">
+
+    <div class="header">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <p>AppCompany LLC</p>
+                <h4>Software Development Internship</h4>
+                <p>12 weeks | Paid | Seattle, WA</p>
+            </div>
+            <div class="col-lg-6 col-12">
+                <a class="button" id="headerButton" type="button" href="personalInfo">Apply Here</a>
+            </div>
+        </div>
+    </div>
+
+        <div class="grid-container">
+<!--            Header -->
+            <div class="grid-item item1">
+                <h2>Personal Information</h2>
+            </div>
+
+<!--            first row-->
+            <div class="grid-item item2">
+                <label><b>First Name</b></label><br>
+                <input class="form-control" type="text" name="firstName">
+            </div>
+
+            <div class="grid-item item3">
+                <label><b>Last Name</b></label><br>
+                <input class="form-control" type="text" name="lastName">
+            </div>
+
+            <div class="grid-item item4">
+                <label><b>Email</b></label><br>
+                <input class="form-control" type="text" name="email">
+            </div>
+
+            <div class="grid-item item5">
+                <p><b>Note</b>: All information entered is protected by our <b>privacy policy</b>. Profile information can only be viewed by others with you permission.</p>
+            </div>
+
+            <div class="grid-item item6">
+                <label><b>State</b></label><br>
+                <select>
+                    <option value="WA">Washington</option>
+                </select>
+            </div>
+
+            <div class="grid-item item7">
+                <label><b>Phone</b></label><br>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="222-333-4444">
+            </div>
+
+            <div class="grid-item item8">
+                <a class="button" type="submit" href="">Next></a>
+            </div>
+        </div>
+    </form>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>
