@@ -50,7 +50,7 @@ $f3->route('GET|POST /personalInfo', function($f3) {
     echo $view->render('views/personal-info.html');
 });
 
-// Define a default route (328/application/app-summary.html)
+// Define a default route (328/application/experience-page.html)
 $f3->route('GET|POST /experience', function($f3) {
 
     //If the form has been submitted
@@ -63,12 +63,30 @@ $f3->route('GET|POST /experience', function($f3) {
         $_SESSION['locate'] = $_POST['locate'];
 
         //Redirect to summary page
-        $f3->reroute('summary');
+        $f3->reroute('mailings');
     }
 
     // Instantiate a view
     $view = new Template();
     echo $view->render('views/experience-page.html');
+});
+
+// Define a default route (328/application/mailing-list.html)
+$f3->route('GET|POST /mailings', function($f3) {
+
+    //If the form has been submitted
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Move data from POST array to SESSION array
+        $_SESSION['language'] = implode(", ",$_POST['language']);
+
+        //Redirect to summary page
+        $f3->reroute('summary');
+    }
+
+    // Instantiate a view
+    $view = new Template();
+    echo $view->render('views/mailing-list.html');
 });
 
 //Define a summary route (328/application/summary)
