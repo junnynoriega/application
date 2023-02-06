@@ -1,0 +1,51 @@
+<!-- experience route -> views/experience page.html-->
+<include href="views/header.html"></include>
+<body class="experiencePage">
+<div class="header">
+    <div class="row">
+        <div class="col-lg-6 col-12">
+            <p>AppCompany LLC</p>
+            <h4>Software Development Internship</h4>
+            <p>Seattle, WA, Paid, 12 weeks</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div>
+            <h2>Experience</h2>
+        </div>
+
+<!--        form and info -->
+        <form action="#" method="post" class="form-horizontal">
+            <div class="row">
+                <div class="col-6">
+<!--                    bio -->
+                    <label for="bio">Biography</label>
+                    <textarea name="bio">Write here</textarea>
+                </div>
+                <div class="col-6">
+<!--                    github -->
+                    <label for="github">Github Link</label>
+                    <input class="form-control" type="text" name="github" >
+<!--                    experience -->
+                    <label for="yearsEx">Years Experience&nbsp;</label>
+                    <label><input type="radio"  name="yearsEx" value="0-2"> 0-2&nbsp;</label>
+                    <label><input type="radio"  name="yearsEx" value="2-4"> 2-4&nbsp;</label>
+                    <label><input type="radio"  name="yearsEx" value="4+"> 4+</label>
+<!--                    locate -->
+                    <br><label for="locate">Willing to Relocate&nbsp;</label>
+                    <label><input type="radio" name="locate" value="Yes"> Yes&nbsp;</label>
+                    <label><input type="radio" name="locate" value="No"> No&nbsp;</label>
+                    <label><input type="radio" name="locate" value="Maybe"> Maybe</label>
+<!--                    button-->
+                    <div>
+                    <button class="btn btn-primary" type="submit" href="experience">Next <b>></b></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
