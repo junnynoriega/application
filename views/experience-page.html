@@ -15,7 +15,7 @@
             <h2>Experience</h2>
         </div>
 
-<!--        form and info -->
+<!--        form and info.html -->
         <form action="#" method="post" class="form-horizontal">
             <div class="row">
                 <div class="col-6">
@@ -25,8 +25,14 @@
                 </div>
                 <div class="col-6">
 <!--                    github -->
-                    <label for="github">Github Link</label>
-                    <input class="form-control" type="text" name="github" >
+                    <div>
+                        <label for="github">Github Link</label>
+                        <input class="form-control" type="text" name="github" id="github">
+                        <check if="{{ isset(@errors['github'])}}">
+                            <span class="err">{{ @errors['github'] }}</span>
+                        </check><br>
+                    </div>
+
 <!--                    experience -->
                     <label for="yearsEx">Years Experience&nbsp;</label>
                     <label><input type="radio"  name="yearsEx" value="0-2"> 0-2&nbsp;</label>

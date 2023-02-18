@@ -10,6 +10,8 @@ session_start();
 
 // Require autoload file
 require_once('vendor/autoload.php');
+require_once('model/data-layer.php');
+require_once('model/validate.php');
 
 // Instantiate F3 Base class
 $f3 = Base::instance();
@@ -21,11 +23,11 @@ $f3->route('GET /', function () {
     echo $view->render('views/app-home.html');
 });
 
-//// Define a default route (328/application/personal-info.html)
+//// Define a default route (328/application/personal-info.html.html)
 //$f3->route('GET|POST /personalInfo', function () {
 //    // Instantiate a view
 //    $view = new Template();
-//    echo $view->render('views/personal-info.html');
+//    echo $view->render('views/personal-info.html.html');
 //});
 
 // Define a default route (328/application/app-summary.html)
@@ -35,14 +37,34 @@ $f3->route('GET|POST /personalInfo', function($f3) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //Move data from POST array to SESSION array
-        $_SESSION['firstName'] = $_POST['firstName'];
-        $_SESSION['lastName'] = $_POST['lastName'];
-        $_SESSION['email'] = $_POST['email'];
+        $firstName = trim($_POST['firstName']);
+        $lastName = trim($_POST['lastName']);
+        $email = trim($_POST['email']);
+        $tel = trim ($_POST['tel']);
+
+        if (validFirstName($firstName) && validLastName($lastName) && validEmail($email) && validTel($tel)) {
+            $_SESSION['firstName'] = $firstName;
+            $_SESSION['$lastName'] = $lastName;
+            $_SESSION['email'] = $email;
+            $_SESSION['tel'] = $tel;
+        }
+        else {
+            $f3->set('errors["firstName"]',
+                'must have at least 1 chars');
+            $f3->set('errors["lastName"]',
+                'must have at least 1 chars');
+            $f3->set('errors["email"]',
+                'invalid email');
+            $f3->set('errors["tel"]',
+                'invalid number');
+        }
+
         $_SESSION['state'] = $_POST['state'];
-        $_SESSION['tel'] = $_POST['tel'];
 
         //Redirect to summary page
-        $f3->reroute('experience');
+        if (empty($f3->get('errors'))) {
+            $f3->reroute('experience');
+        }
     }
 
     // Instantiate a view
@@ -57,13 +79,26 @@ $f3->route('GET|POST /experience', function($f3) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //Move data from POST array to SESSION array
+        $github = trim($_POST['github']);
+
+        if(validGitHub($github)) {
+            $_SESSION['github'] = $github;
+        }
+        else {
+            $f3->set('errors["github"]',
+                'invalid link');
+        }
+
+
         $_SESSION['bio'] = $_POST['bio'];
-        $_SESSION['github'] = $_POST['github'];
         $_SESSION['yearsEx'] = $_POST['yearsEx'];
         $_SESSION['locate'] = $_POST['locate'];
 
         //Redirect to summary page
-        $f3->reroute('mailings');
+        //Redirect to summary page
+        if (empty($f3->get('errors'))) {
+            $f3->reroute('mailings');
+        }
     }
 
     // Instantiate a view
@@ -80,9 +115,30 @@ $f3->route('GET|POST /mailings', function($f3) {
         //Move data from POST array to SESSION array
         $_SESSION['language'] = implode(", ",$_POST['language']);
 
+//        // validate the job selections
+//        $language = implode(", ",$_POST['language']);
+//        if(validSelectionsJobs($language)) {
+//            $_SESSION['language'] = $language;
+//
+//        }
+//        else {
+//            $f3->set('errors["language"]',
+//                'Select one please');
+//        }
+
+
         //Redirect to summary page
-        $f3->reroute('summary');
+        //if there are no errors
+        if (empty($f3->get('errors'))) {
+            $f3->reroute('summary');
+        }
+
+//        //Redirect to summary page
+//        $f3->reroute('summary');
     }
+    //Add meals to F3 hive
+    $f3->set('languages', getSelectionsJobs());
+//    $f3->set('verticals', getSelectionsVerticals());
 
     // Instantiate a view
     $view = new Template();
