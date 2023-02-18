@@ -32,17 +32,25 @@
                             <span class="err">{{ @errors['github'] }}</span>
                         </check><br>
                     </div>
-
 <!--                    experience -->
-                    <label for="yearsEx">Years Experience&nbsp;</label>
-                    <label><input type="radio"  name="yearsEx" value="0-2"> 0-2&nbsp;</label>
-                    <label><input type="radio"  name="yearsEx" value="2-4"> 2-4&nbsp;</label>
-                    <label><input type="radio"  name="yearsEx" value="4+"> 4+</label>
+                    <div>
+                        <label for="yearsEx">Years Experience&nbsp;</label>
+                        <div>
+                            <repeat group="{{ @yearsExes }}" value="{{ @yearsEx }}">
+                                <label><input type="radio"  name="yearsEx[]" value="{{ @yearsEx }}" id="yearsEx"> {{ ucfirst@yearsEx }}</label>
+                            </repeat>
+                        </div>
+                        <check if="{{ isset(@errors['yearsEx'])}}">
+                            <span class="err">{{ @errors['yearsEx'] }}</span>
+                        </check><br>
+                    </div>
 <!--                    locate -->
-                    <br><label for="locate">Willing to Relocate&nbsp;</label>
-                    <label><input type="radio" name="locate" value="Yes"> Yes&nbsp;</label>
-                    <label><input type="radio" name="locate" value="No"> No&nbsp;</label>
-                    <label><input type="radio" name="locate" value="Maybe"> Maybe</label>
+                    <div>
+                        <br><label for="locate">Willing to Relocate&nbsp;</label>
+                        <label><input type="radio" name="locate" value="Yes"> Yes&nbsp;</label>
+                        <label><input type="radio" name="locate" value="No"> No&nbsp;</label>
+                        <label><input type="radio" name="locate" value="Maybe"> Maybe</label>
+                    </div>
 <!--                    button-->
                     <div>
                     <button class="btn btn-primary" type="submit" href="experience">Next <b>></b></button>

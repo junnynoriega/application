@@ -12,7 +12,10 @@
         return preg_match("/^[0-9]{3}[0-9]{3}[0-9]{4}$/", $tel);
     }
     function validGitHub($github) {
-        return !preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $github);
+        return preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $github);
+    }
+    function validYearsExperience($yearsEx) {
+        return in_array($yearsEx,getYearsExperience());
     }
     // return array of mailing-list options chosen
     function validSelectionsJobs($language) {

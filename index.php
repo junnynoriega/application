@@ -80,18 +80,19 @@ $f3->route('GET|POST /experience', function($f3) {
 
         //Move data from POST array to SESSION array
         $github = trim($_POST['github']);
+        $yearsEx = $_POST['yearsEx'];
 
-        if(validGitHub($github)) {
+
+        if(validGitHub($github) && validYearsExperience($yearsEx)) {
             $_SESSION['github'] = $github;
+            $_SESSION['yearsEx'] = $yearsEx;
         }
         else {
             $f3->set('errors["github"]',
                 'invalid link');
         }
 
-
         $_SESSION['bio'] = $_POST['bio'];
-        $_SESSION['yearsEx'] = $_POST['yearsEx'];
         $_SESSION['locate'] = $_POST['locate'];
 
         //Redirect to summary page
@@ -100,6 +101,7 @@ $f3->route('GET|POST /experience', function($f3) {
             $f3->reroute('mailings');
         }
     }
+    $f3->set('yearsExes', getYearsExperience());
 
     // Instantiate a view
     $view = new Template();
