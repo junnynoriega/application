@@ -21,7 +21,7 @@
                 <div class="col-6">
 <!--                    bio -->
                     <label for="bio">Biography</label>
-                    <textarea name="bio">Write here</textarea>
+                    <textarea name="bio" id="bio">Write here</textarea>
                 </div>
                 <div class="col-6">
 <!--                    github -->
@@ -34,22 +34,24 @@
                     </div>
 <!--                    experience -->
                     <div>
-                        <label for="yearsEx">Years Experience&nbsp;</label>
+                        <label for="expYears">Years Experience&nbsp;</label>
                         <div>
-                            <repeat group="{{ @yearsExes }}" value="{{ @yearsEx }}">
-                                <label><input type="radio"  name="yearsEx[]" value="{{ @yearsEx }}" id="yearsEx"> {{ ucfirst@yearsEx }}</label>
-                            </repeat>
+                            <label><input type="radio"  name="expYears" value="0-2" id="expYears">0-2</label>
+                            <label><input type="radio"  name="expYears" value="2-4">2-4</label>
+                            <label><input type="radio"  name="expYears" value="4+">4+</label>
                         </div>
-                        <check if="{{ isset(@errors['yearsEx'])}}">
-                            <span class="err">{{ @errors['yearsEx'] }}</span>
+                        <check if="{{ isset(@errors['expYears'])}}">
+                            <span class="err">{{ @errors['expYears'] }}</span>
                         </check><br>
                     </div>
 <!--                    locate -->
                     <div>
-                        <br><label for="locate">Willing to Relocate&nbsp;</label>
-                        <label><input type="radio" name="locate" value="Yes"> Yes&nbsp;</label>
-                        <label><input type="radio" name="locate" value="No"> No&nbsp;</label>
-                        <label><input type="radio" name="locate" value="Maybe"> Maybe</label>
+                        <div>
+                            <br><label for="locate">Willing to Relocate&nbsp;</label>
+                            <label><input type="radio" name="locate" value="Yes" id="locate"> Yes&nbsp;</label>
+                            <label><input type="radio" name="locate" value="No"> No&nbsp;</label>
+                            <label><input type="radio" name="locate" value="Maybe"> Maybe</label>
+                        </div>
                     </div>
 <!--                    button-->
                     <div>

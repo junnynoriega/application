@@ -1,9 +1,9 @@
 <?php
     function validFirstName($firstName) {
-        return strlen($firstName) > 1;
+        return preg_match("/^[a-zA-Z-' ]*$/", $firstName);
     }
     function validLastName($lastName) {
-        return strlen($lastName) > 1;
+        return preg_match("/^[a-zA-Z-' ]*$/", $lastName);
     }
     function validEmail($email) {
         return preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/", $email);
@@ -11,13 +11,12 @@
     function validTel($tel) {
         return preg_match("/^[0-9]{3}[0-9]{3}[0-9]{4}$/", $tel);
     }
+    function validExperience($expYears) {
+        return in_array($expYears, getExperience());
+    }
     function validGitHub($github) {
-        return preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $github);
+        return filter_var($github, FILTER_VALIDATE_URL);
     }
-    function validYearsExperience($yearsEx) {
-        return in_array($yearsEx,getYearsExperience());
-    }
-    // return array of mailing-list options chosen
     function validSelectionsJobs($language) {
       return in_array($language, getSelectionsJobs());
     }

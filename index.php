@@ -80,29 +80,28 @@ $f3->route('GET|POST /experience', function($f3) {
 
         //Move data from POST array to SESSION array
         $github = trim($_POST['github']);
-        $yearsEx = $_POST['yearsEx'];
+        $expYears = $_POST['expYears'];
 
-
-        if(validGitHub($github) && validYearsExperience($yearsEx)) {
+        if(validExperience($expYears) && validGitHub($github)) {
+            $_SESSION['expYears'] = $expYears;
             $_SESSION['github'] = $github;
-            $_SESSION['yearsEx'] = $yearsEx;
         }
         else {
+            $f3->set('errors["expYears"]',
+            'please select experience');
             $f3->set('errors["github"]',
                 'invalid link');
         }
 
-        $_SESSION['bio'] = $_POST['bio'];
         $_SESSION['locate'] = $_POST['locate'];
+        $_SESSION['bio'] = $_POST['bio'];
 
-        //Redirect to summary page
+
         //Redirect to summary page
         if (empty($f3->get('errors'))) {
             $f3->reroute('mailings');
         }
     }
-    $f3->set('yearsExes', getYearsExperience());
-
     // Instantiate a view
     $view = new Template();
     echo $view->render('views/experience-page.html');
@@ -117,7 +116,7 @@ $f3->route('GET|POST /mailings', function($f3) {
         //Move data from POST array to SESSION array
         $_SESSION['language'] = implode(", ",$_POST['language']);
 
-//        // validate the job selections
+        // validate the job selections
 //        $language = implode(", ",$_POST['language']);
 //        if(validSelectionsJobs($language)) {
 //            $_SESSION['language'] = $language;
@@ -127,7 +126,6 @@ $f3->route('GET|POST /mailings', function($f3) {
 //            $f3->set('errors["language"]',
 //                'Select one please');
 //        }
-
 
         //Redirect to summary page
         //if there are no errors
