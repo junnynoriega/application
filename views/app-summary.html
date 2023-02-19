@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="rowLines">
-                        <p> Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }} </p>
+                        Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}
                     </div>
                     <div class="rowLines">
                         Email: {{ @SESSION.email }}
@@ -39,7 +39,7 @@
                         Willing to Relocate: {{ @SESSION.locate }}
                     </div>
                     <div class="rowLines">
-                        <p>Mailing List: {{ @SESSION.language }}</p>
+                        <p>Mailing List: {{ @SESSION.language }}, {{ @SESSION.vertical }}</p>
                     </div>
                 </div>
 
@@ -53,9 +53,10 @@
 
     <div class="bottom">
         <div class="row">
-            <div>
-                <a class="button" type="button" href="app-summary.html">Submit My Application!</a>
+            <div class="col-lg-6 col-12">
+                <a class="button" type="button" href="">Submit My Application!</a>
             </div>
+            <div class="col-6"></div>
         </div>
     </div>
 

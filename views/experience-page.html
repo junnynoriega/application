@@ -35,25 +35,24 @@
                     </div>
 <!--                    experience -->
                     <div>
-                        <label for="expYears">Years Experience&nbsp;</label>
                         <div>
-                            <label><input type="radio"  name="expYears" value="0-2" id="expYears">0-2</label>
-                            <label><input type="radio"  name="expYears" value="2-4">2-4</label>
-                            <label><input type="radio"  name="expYears" value="4+">4+</label>
+                            <label for="expYears">Years Experience&nbsp;
+                                <repeat group="{{ @yearsOfEx }}" value="{{ @expYears }}">
+                                <input type="radio" name="expYears" value="{{ @expYears }}" id="expYears"> {{ ucfirst(@expYears) }}&nbsp;
+                                </repeat>
+                            </label>
                         </div>
                         <!--check validation-->
                         <check if="{{ isset(@errors['expYears'])}}">
                             <span class="err">{{ @errors['expYears'] }}</span>
-                        </check><br>
+                        </check>
                     </div>
 <!--                    locate -->
                     <div>
-                        <div>
-                            <br><label for="locate">Willing to Relocate&nbsp;</label>
-                            <label><input type="radio" name="locate" value="Yes" id="locate"> Yes&nbsp;</label>
-                            <label><input type="radio" name="locate" value="No"> No&nbsp;</label>
-                            <label><input type="radio" name="locate" value="Maybe"> Maybe</label>
-                        </div>
+                        <br><label for="locate">Willing to Relocate&nbsp;</label>
+                        <label><input type="radio" name="locate" value="Yes" id="locate"> Yes&nbsp;</label>
+                        <label><input type="radio" name="locate" value="No"> No&nbsp;</label>
+                        <label><input type="radio" name="locate" value="Maybe"> Maybe</label>
                     </div>
 <!--                    button-->
                     <div>

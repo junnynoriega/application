@@ -15,60 +15,40 @@
 
         <form action="#" method="post" class="form-horizontal">
 <!--        job selections-->
-            <b>Software Development Jobs</b>
-            <ul>
-                <repeat group="{{ @languages }}" value="{{ @language }}">
-                <li>
-                    <label>
-                        <input type="checkbox" name="language[]" value="{{ @language }}"> {{ ucfirst(@language) }}
-                    </label>
-                </li>
-                </repeat>
-            </ul>
-            <!--check validation-->
-            <check if="{{ isset(@errors['language'])}}">
-                <span class="err">{{ @errors['language'] }}</span>
-            </check><br>
+            <div>
+                <b>Software Development Jobs</b>
+                <ul>
+                    <repeat group="{{ @languages }}" value="{{ @language }}">
+                        <li>
+                            <label>
+                                <input type="checkbox" name="language" value="{{ @language }}"> {{ ucfirst(@language) }}
+                            </label>
+                        </li>
+                    </repeat>
+                </ul>
+                <!--check validation-->
+                <check if="{{ isset(@errors['language'])}}">
+                    <span class="err">{{ @errors['language'] }}</span>
+                </check><br>
+            </div>
 
 <!--        vertical selections-->
-            <b>Industry Verticals</b>
-            <ul>
-                <repeat group="{{ @verticals }}" value="{{ @vertical }}">
-                <li>
-                    <label>
-                        <input type="checkbox" name="vertical" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}
-                    </label>
-                </li>
-                </repeat>
-<!--                <li>-->
-<!--                    <label>-->
-<!--                        <input type="checkbox" name="language[]" value="Industrial tech"> Industrial tech-->
-<!--                    </label>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <label>-->
-<!--                        <input type="checkbox" name="language[]" value="Health tech"> Health tech-->
-<!--                    </label>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <label>-->
-<!--                        <input type="checkbox" name="language[]" value="Cybersecurity"> Cybersecurity-->
-<!--                    </label>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <label>-->
-<!--                        <input type="checkbox" name="language[]" value="Ag tech"> Ag tech-->
-<!--                    </label>-->
-<!--                </li><br>-->
-<!--                <li>-->
-<!--                    <label>-->
-<!--                        <input type="checkbox" name="language[]" value="HR tech"> HR tech-->
-<!--                    </label>-->
-<!--                </li>-->
-            </ul>
-<!--            <check if="{{ isset(@errors['vertical'])}}">-->
-<!--                <span class="">{{ @errors['vertical'] }}</span>-->
-<!--            </check>-->
+            <div>
+                <b>Industry Verticals</b>
+                <ul>
+                    <repeat group="{{ @verticals }}" value="{{ @vertical }}">
+                        <li>
+                            <label>
+                                <input type="checkbox" name="vertical" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}
+                            </label>
+                        </li>
+                    </repeat>
+                </ul>
+                <!--check validation-->
+                <check if="{{ isset(@errors['vertical'])}}">
+                    <span class="">{{ @errors['vertical'] }}</span>
+                </check>
+            </div>
 
 <!-- button submit -->
             <div>

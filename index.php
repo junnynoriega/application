@@ -101,6 +101,8 @@ $f3->route('GET|POST /experience', function($f3) {
             $f3->reroute('mailings');
         }
     }
+    $f3->set('yearsOfEx', getExperience());
+
     // Instantiate a view
     $view = new Template();
     echo $view->render('views/experience-page.html');
@@ -113,18 +115,22 @@ $f3->route('GET|POST /mailings', function($f3) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //Move data from POST array to SESSION array
-//        $_SESSION['language'] = implode(", ",$_POST['language']);
+//        $_SESSION['language'] = implode(", ", $_POST['language']);
+//        $_SESSION['vertical'] = implode(", ", $_POST['vertical']);
 
         // validate the job selections
         $language = $_POST['language'];
-        if(empty(validSelectionsJobs($language))) {
-            $f3->set('errors["language"]',
-                'invalid link');
+        $vertical = $_POST['vertical'];
+        if(validSelectionsJobs($language) && validSelectionsVerticals($vertical)) {
+            $_SESSION['language'] = $language;
+            $_SESSION['vertical'] = $vertical;
         }
         else {
-            $_SESSION['language'] = implode(", ",$_POST['language']);
+            $f3->set('errors["language"]',
+                'invalid link');
+            $f3->set('errors["vertical"]',
+                'invalid link');
         }
-
 
         //Redirect to summary page
         //if there are no errors
@@ -137,7 +143,7 @@ $f3->route('GET|POST /mailings', function($f3) {
     }
     //Add meals to F3 hive
     $f3->set('languages', getSelectionsJobs());
-//    $f3->set('verticals', getSelectionsVerticals());
+    $f3->set('verticals', getSelectionsVerticals());
 
     // Instantiate a view
     $view = new Template();

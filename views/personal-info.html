@@ -16,7 +16,7 @@
                 <input class="form-control" type="text" name="firstName" id="firstName">
 <!--                check validation-->
                 <check if="{{ isset(@errors['firstName'])}}">
-                    <span class="err">{{ @errors['firstName'] }}</span>
+                    <span class="">{{ @errors['firstName'] }}</span>
                 </check><br>
             </div>
 
@@ -25,7 +25,7 @@
                 <input class="form-control" type="text" name="lastName" id="lastName">
 <!--                    check validation-->
                 <check if="{{ isset(@errors['lastName'])}}">
-                    <span class="err">{{ @errors['lastName'] }}</span>
+                    <span class="">{{ @errors['lastName'] }}</span>
                 </check><br>
             </div>
 
