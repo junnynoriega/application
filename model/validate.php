@@ -6,7 +6,7 @@
         return preg_match("/^[a-zA-Z-' ]*$/", $lastName);
     }
     function validEmail($email) {
-        return preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/", $email);
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
     function validTel($tel) {
         return preg_match("/^[0-9]{3}[0-9]{3}[0-9]{4}$/", $tel);
