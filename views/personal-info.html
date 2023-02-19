@@ -4,16 +4,6 @@
 <body>
     <form action="#" method="post" class="form-horizontal">
 
-    <div class="header">
-        <div class="row">
-            <div class="col-12">
-                <p>AppCompany LLC</p>
-                <h4>Software Development Internship</h4>
-                <p>Seattle, WA, Paid, 12 weeks</p>
-            </div>
-        </div>
-    </div>
-
         <div class="grid-container" id="sum-container">
 <!--            Header -->
             <div class="grid-item item1">
@@ -24,6 +14,7 @@
             <div class="grid-item item2">
                 <label for="firstName"><b>First Name</b></label><br>
                 <input class="form-control" type="text" name="firstName" id="firstName">
+<!--                check validation-->
                 <check if="{{ isset(@errors['firstName'])}}">
                     <span class="err">{{ @errors['firstName'] }}</span>
                 </check><br>
@@ -32,6 +23,7 @@
             <div class="grid-item item3">
                 <label for="lastName"><b>Last Name</b></label><br>
                 <input class="form-control" type="text" name="lastName" id="lastName">
+<!--                    check validation-->
                 <check if="{{ isset(@errors['lastName'])}}">
                     <span class="err">{{ @errors['lastName'] }}</span>
                 </check><br>
@@ -40,6 +32,7 @@
             <div class="grid-item item4">
                 <label for="email"><b>Email</b></label><br>
                 <input class="form-control" type="text" name="email" id="email">
+<!--                check validation-->
                 <check if="{{ isset(@errors['email'])}}">
                     <span class="err">{{ @errors['email'] }}</span>
                 </check><br>
@@ -59,16 +52,18 @@
             <div class="grid-item item7">
                 <label for="tel"><b>Phone</b></label><br>
                 <input type="tele" id="tel" name="tel" placeholder="222-333-4444">
+<!--                check validation-->
                 <check if="{{ isset(@errors['tel'])}}">
                     <span class="err">{{ @errors['tel'] }}</span>
                 </check><br>
             </div>
-
+<!--        next button-->
             <div class="grid-item item8">
                 <button class="btn btn-primary" type="submit" href="experience">Next></button>
             </div>
-    </form>
         </div>
+    </form>
+
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

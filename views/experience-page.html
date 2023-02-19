@@ -28,6 +28,7 @@
                     <div>
                         <label for="github">Github Link</label>
                         <input class="form-control" type="text" name="github" id="github">
+                        <!--check validation-->
                         <check if="{{ isset(@errors['github'])}}">
                             <span class="err">{{ @errors['github'] }}</span>
                         </check><br>
@@ -40,6 +41,7 @@
                             <label><input type="radio"  name="expYears" value="2-4">2-4</label>
                             <label><input type="radio"  name="expYears" value="4+">4+</label>
                         </div>
+                        <!--check validation-->
                         <check if="{{ isset(@errors['expYears'])}}">
                             <span class="err">{{ @errors['expYears'] }}</span>
                         </check><br>

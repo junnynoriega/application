@@ -96,7 +96,6 @@ $f3->route('GET|POST /experience', function($f3) {
         $_SESSION['locate'] = $_POST['locate'];
         $_SESSION['bio'] = $_POST['bio'];
 
-
         //Redirect to summary page
         if (empty($f3->get('errors'))) {
             $f3->reroute('mailings');
@@ -114,18 +113,18 @@ $f3->route('GET|POST /mailings', function($f3) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //Move data from POST array to SESSION array
-        $_SESSION['language'] = implode(", ",$_POST['language']);
+//        $_SESSION['language'] = implode(", ",$_POST['language']);
 
         // validate the job selections
-//        $language = implode(", ",$_POST['language']);
-//        if(validSelectionsJobs($language)) {
-//            $_SESSION['language'] = $language;
-//
-//        }
-//        else {
-//            $f3->set('errors["language"]',
-//                'Select one please');
-//        }
+        $language = $_POST['language'];
+        if(empty(validSelectionsJobs($language))) {
+            $f3->set('errors["language"]',
+                'invalid link');
+        }
+        else {
+            $_SESSION['language'] = implode(", ",$_POST['language']);
+        }
+
 
         //Redirect to summary page
         //if there are no errors

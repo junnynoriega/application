@@ -14,6 +14,7 @@
         <h2>Job Openings Mailing Lists</h2>
 
         <form action="#" method="post" class="form-horizontal">
+<!--        job selections-->
             <b>Software Development Jobs</b>
             <ul>
                 <repeat group="{{ @languages }}" value="{{ @language }}">
@@ -24,17 +25,18 @@
                 </li>
                 </repeat>
             </ul>
+            <!--check validation-->
             <check if="{{ isset(@errors['language'])}}">
                 <span class="err">{{ @errors['language'] }}</span>
             </check><br>
 
-
+<!--        vertical selections-->
             <b>Industry Verticals</b>
             <ul>
                 <repeat group="{{ @verticals }}" value="{{ @vertical }}">
                 <li>
                     <label>
-                        <input type="checkbox" name="vertical[]" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}
+                        <input type="checkbox" name="vertical" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}
                     </label>
                 </li>
                 </repeat>
@@ -70,7 +72,7 @@
 
 <!-- button submit -->
             <div>
-                <button class="btn btn-primary" type="submit" href="mailings">Next <b>></b></button>
+                <button class="btn btn-primary" type="submit" name="submit" href="mailings">Next <b>></b></button>
             </div>
         </form>
     </div>
