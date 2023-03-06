@@ -81,9 +81,12 @@ class Controller {
                     'invalid link');
             }
 
-            //Redirect to summary page
+            //Redirect to mailings page
             if (empty($this->_f3->get('errors'))) {
-                $_SESSION['newApplicantExp'] = $newApplicantExp;
+//                if(!empty($_POST['checkedMailings'])) {
+//                    // go to summary page
+//                    $this->_f3->reroute('summary');
+//                }
                 $this->_f3->reroute('mailings');
             }
         }
