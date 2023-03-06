@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="rowLines">
-                        Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}
+                        Name: {{ @SESSION.newApplicant->getFname() }} {{ @SESSION.newApplicant->getLname() }}
                     </div>
                     <div class="rowLines">
                         Email: {{ @SESSION.email }}
