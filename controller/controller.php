@@ -84,7 +84,7 @@ class Controller {
             //Redirect to summary page
             if (empty($this->_f3->get('errors'))) {
                 $_SESSION['newApplicantExp'] = $newApplicantExp;
-                $this->_f3->reroute('summary');
+                $this->_f3->reroute('mailings');
             }
         }
         $this->_f3->set('yearsOfEx', DataLayer::getExperience());
@@ -94,9 +94,10 @@ class Controller {
         echo $view->render('views/experience-page.html');
     }
     function mailings() {
-        //If the form has been submitted
-//        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//
+//        If the form has been submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $newApplicantMailings = new Applicant_SubscribedToLists();
 //            //Move data from POST array to SESSION array
 ////        $_SESSION['language'] = implode(", ", $_POST['language']);
 ////        $_SESSION['vertical'] = implode(", ", $_POST['vertical']);
@@ -120,17 +121,25 @@ class Controller {
 //            if (empty($f3->get('errors'))) {
 //                $f3->reroute('summary');
 //            }
-//
-////        //Redirect to summary page
-////        $f3->reroute('summary');
-//        }
-//        //Add meals to F3 hive
-//        $f3->set('languages', getSelectionsJobs());
-//        $f3->set('verticals', getSelectionsVerticals());
-//
-//        // Instantiate a view
-//        $view = new Template();
-//        echo $view->render('views/mailing-list.html');
+
+            $langString = isset($_POST['language']) ?
+                implode(", ",$_POST['language']) : "";
+            $newApplicantMailings->setSelectionJobs($langString);
+
+            $vertString = isset($_POST['vertical']) ?
+                implode(", ",$_POST['vertical']) : "";
+            $newApplicantMailings->setSelectionVerticals($vertString);
+
+            //Redirect to summary page
+            $this->_f3->reroute('summary');
+        }
+        //Add meals to F3 hive
+        $this->_f3->set('languages', DataLayer::getSelectionsJobs());
+        $this->_f3->set('verticals', DataLayer::getSelectionsVerticals());
+
+        // Instantiate a view
+        $view = new Template();
+        echo $view->render('views/mailing-list.html');
     }
     function summary() {
         //Instantiate a view

@@ -89,7 +89,7 @@ img {
      grid-column: 2;
  }
 .item5 {
-    grid-row: 2 / span 3;
+    grid-row: 2 / span 4;
     grid-column: 3;
 }
 .item4 {

@@ -39,7 +39,8 @@
                         Willing to Relocate: {{ @SESSION.locate }}
                     </div>
                     <div class="rowLines">
-                        <p>Mailing List: {{ @SESSION.language }}, {{ @SESSION.vertical }}</p>
+                        // I don't have this part working yet
+                        <p>Mailing List: {{ @SESSION.newApplicantMailings->getSelectionJobs() }}, {{ @SESSION.newApplicantMailings->getSelectionVerticals() }}</p>
                     </div>
                 </div>
 

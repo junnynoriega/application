@@ -19,10 +19,24 @@ class Validate
     static function validGitHub($github) {
         return filter_var($github, FILTER_VALIDATE_URL);
     }
-//    static function validSelectionsJobs($language) {
+    static function validSelectionsJobs($userLanguage) {
 //        return in_array($language, DataLayer::getSelectionsJobs());
-//    }
-//    static function validSelectionsVerticals($vertical) {
+        $validLanguages = DataLayer::getSelectionsJobs();
+        foreach ($userLanguage as $language) {
+            if (!in_array($language, $validLanguages)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    static function validSelectionsVerticals($userVertical) {
 //        return in_array($vertical, DataLayer::getSelectionsVerticals());
-//    }
+        $validVerticals = DataLayer::getSelectionsVerticals();
+        foreach ($userVertical as $vertical) {
+            if (!in_array($vertical, $validVerticals)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
