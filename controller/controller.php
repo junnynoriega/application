@@ -23,7 +23,7 @@ class Controller {
             $newApplicant = new Applicant();
 
             //Move data from POST array to SESSION array
-//            $_SESSION['state'] = $_POST['state'];
+            $_SESSION['state'] = $_POST['state'];
             $firstName = trim($_POST['firstName']);
             $lastName = trim($_POST['lastName']);
             $email = trim($_POST['email']);
@@ -32,11 +32,8 @@ class Controller {
             if (Validate::validFirstName($firstName) && Validate::validLastName($lastName) && Validate::validEmail($email) && Validate::validTel($tel)) {
                 $newApplicant->setFname($firstName);
                 $newApplicant->setLname($lastName);
-//            $newOrder->setEmail($lastName);
-//            $_SESSION['firstName'] = $firstName;
-//            $_SESSION['lastName'] = $lastName;
-//            $_SESSION['email'] = $email;
-//            $_SESSION['tel'] = $tel;
+                $newApplicant->setEmail($email);
+                $newApplicant->setTel($tel);
             }
             else {
                 $this->_f3->set('errors["firstName"]',
@@ -51,6 +48,7 @@ class Controller {
 
             //Redirect to summary page
             if (empty($this->_f3->get('errors'))) {
+                $_SESSION['newApplicant'] = $newApplicant;
                 $this->_f3->reroute('experience');
             }
         }
@@ -61,37 +59,39 @@ class Controller {
     }
     function experience()
     {
-//        //If the form has been submitted
-//        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//
-//            //Move data from POST array to SESSION array
-//            $github = trim($_POST['github']);
-//            $expYears = $_POST['expYears'];
-//
-//            if(validExperience($expYears) && validGitHub($github)) {
-//                $_SESSION['expYears'] = $expYears;
-//                $_SESSION['github'] = $github;
-//            }
-//            else {
-//                $f3->set('errors["expYears"]',
-//                    'please select experience');
-//                $f3->set('errors["github"]',
-//                    'invalid link');
-//            }
-//
-//            $_SESSION['locate'] = $_POST['locate'];
-//            $_SESSION['bio'] = $_POST['bio'];
-//
-//            //Redirect to summary page
-//            if (empty($f3->get('errors'))) {
-//                $f3->reroute('mailings');
-//            }
-//        }
-//        $f3->set('yearsOfEx', getExperience());
-//
-//        // Instantiate a view
-//        $view = new Template();
-//        echo $view->render('views/experience-page.html');
+        //If the form has been submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $newApplicantExp = new Applicant();
+
+            //Move data from POST array to SESSION array
+            $_SESSION['locate'] = $_POST['locate'];
+            $_SESSION['bio'] = $_POST['bio'];
+            $github = trim($_POST['github']);
+            $expYears = $_POST['expYears'];
+
+            if(Validate::validExperience($expYears) && Validate::validGitHub($github)) {
+                $newApplicantExp->setExperience($expYears);
+                $newApplicantExp->setGithub($github);
+            }
+            else {
+                $this->_f3->set('errors["expYears"]',
+                    'please select experience');
+                $this->_f3->set('errors["github"]',
+                    'invalid link');
+            }
+
+            //Redirect to summary page
+            if (empty($this->_f3->get('errors'))) {
+                $_SESSION['newApplicantExp'] = $newApplicantExp;
+                $this->_f3->reroute('summary');
+            }
+        }
+        $this->_f3->set('yearsOfEx', DataLayer::getExperience());
+
+        // Instantiate a view
+        $view = new Template();
+        echo $view->render('views/experience-page.html');
     }
     function mailings() {
         //If the form has been submitted
@@ -136,5 +136,8 @@ class Controller {
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/app-summary.html");
+
+        // destroy session array (CLEARING any previous data so that it doesn't overlap new data)
+        session_destroy();
     }
 }

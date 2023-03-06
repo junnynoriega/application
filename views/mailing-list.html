@@ -21,7 +21,7 @@
                     <repeat group="{{ @languages }}" value="{{ @language }}">
                         <li>
                             <label>
-                                <input type="checkbox" name="language" value="{{ @language }}"> {{ ucfirst(@language) }}
+                                <input type="checkbox" name="language[]" value="{{ @language }}"> {{ ucfirst(@language) }}
                             </label>
                         </li>
                     </repeat>
@@ -39,7 +39,7 @@
                     <repeat group="{{ @verticals }}" value="{{ @vertical }}">
                         <li>
                             <label>
-                                <input type="checkbox" name="vertical" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}
+                                <input type="checkbox" name="vertical[]" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}
                             </label>
                         </li>
                     </repeat>

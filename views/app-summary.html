@@ -21,19 +21,19 @@
                         Name: {{ @SESSION.newApplicant->getFname() }} {{ @SESSION.newApplicant->getLname() }}
                     </div>
                     <div class="rowLines">
-                        Email: {{ @SESSION.email }}
+                        Email: {{ @SESSION.newApplicant->getEmail() }}
                     </div>
                     <div class="rowLines">
                         State: {{ @SESSION.state }}
                     </div>
                     <div class="rowLines">
-                        Phone: {{ @SESSION.tel }}
+                        Phone: {{ @SESSION.newApplicant->getTel() }}
                     </div>
                     <div class="rowLines">
-                        Github Link: {{ @SESSION.github }}
+                        Github Link: {{ @SESSION.newApplicantExp->getGithub() }}
                     </div>
                     <div class="rowLines">
-                        Experience: {{ @SESSION.expYears }}
+                        Experience: {{ @SESSION.newApplicantExp->getExperience() }}
                     </div>
                     <div class="rowLines">
                         Willing to Relocate: {{ @SESSION.locate }}
