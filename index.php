@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 // Require autoload file
 require_once('vendor/autoload.php');
-//require_once('model/data-layer.php');
+//require_once('model/validate.php');
 //require_once('model/validate.php');
 
 // Start Session AFTER requiring autoload.php
